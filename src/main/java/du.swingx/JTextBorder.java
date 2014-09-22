@@ -5,13 +5,13 @@ import java.awt.*;
 
 public class JTextBorder extends AbstractBorder {
 
-    private JTextPane parent;
+    private JETextPane parent;
     private Color color;
     private int oneInset = -1;
     private int leftInset = -1;
     private Rectangle[] lineRect;
 
-    public JTextBorder(JTextPane parent) {
+    public JTextBorder(JETextPane parent) {
         this.parent = parent;
     }
 

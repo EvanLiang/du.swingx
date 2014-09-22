@@ -1,24 +1,25 @@
 package du.swingx;
 
+import du.swingx.plaf.JETextPaneAddon;
 import org.apache.commons.lang.StringUtils;
+import org.jdesktop.swingx.plaf.LookAndFeelAddons;
 
-import javax.swing.*;
 import javax.swing.text.AttributeSet;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.Document;
 import java.awt.*;
 
-public class JTextPane extends javax.swing.JTextPane {
+public class JETextPane extends javax.swing.JTextPane {
 
+    public static final String uiClassID = "ETextPaneUI";
     private static final String EOL = "\n";
 
     static {
-        String style = UIManager.getLookAndFeel().getName();
-        if ("Windows".equals(style)) {
-            UIManager.put("TextPaneUI", "lib.swing.ui.WindowsTextPaneUI");
-        } else {
-            UIManager.put("TextPaneUI", "lib.swing.ui.BasicTextPaneUI");
-        }
+        LookAndFeelAddons.contribute(new JETextPaneAddon());
+    }
+
+    public String getUIClassID() {
+        return uiClassID;
     }
 
     private int lineFocus = 0;
@@ -32,7 +33,7 @@ public class JTextPane extends javax.swing.JTextPane {
     private String[] borderText;
     private Color[] borderTextColor;
 
-    public JTextPane() {
+    public JETextPane() {
         initialize();
     }
 
